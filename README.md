@@ -23,11 +23,6 @@ File descriptions:
 - **custom_allocator.c** : This file is used to perform allocations either on DRAM or Optane exclusively. It includes the custom functions that are used to override the original
   glibc implementations. If the *dram* variable is set to 1, all allocations will be handled by DRAM, and if *dram=0* all allocations will be handled by optane.
 
-- **random.c** : This file is used to perform allocations randomly. Each allocation is handled by either DRAM or Optane randomly.
-
-- **round-robin.c** : This file is used to perform allocations in a round-robin way. The allocation data are placed in round-robin way
-on each memory type.
-
 - **monitor.c** : This file is used to perform allocations on DRAM and also monitor the allocation patterns during the execution of the
   target application. A background thread is used, which logs information about the allocated bytes and active allocated objects over time.
 
