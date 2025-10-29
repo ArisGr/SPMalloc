@@ -17,7 +17,7 @@ to your own memory type supported by the Memkind API.
 - [License](#license)
 
 ## Descriptions
-In this repo, you will find a number of files, each one with each own functionality for data placement on heterogeneous memory systems.
+In this repo, you will find a number of files, each one with its own functionality for data placement on heterogeneous memory systems.
 
 File descriptions:
 - **custom_allocator.c** : This file is used to perform allocations either on DRAM or Optane exclusively. It includes the custom functions that are used to override the original
