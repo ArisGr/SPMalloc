@@ -86,25 +86,25 @@ the allocated bytes value is the number of allocated bytes in the current x seco
 
 ## Spike Analysis Algorithm
 
-In this repo, you will find a number of files, each one with its own functionality for memory spike analysis and data placement decisions. File descriptions:
+In this repo, you will also find our novel, spike-based algorithm designed for efficient data analysis and placement on heterogeneous memory systems.
 
 - **main.py** : The main orchestrator of the spike analysis tool. It calls functions from all other modules to perform the full workflow: argument parsing, data extraction, spike detection, top-k spike selection, allocated bytes calculation, and output.
 
-- **parse_args.py** : Handles command-line argument parsing and file path setup. This module allows you to specify benchmark name, `k`, and spike interval parameters.
+- **parse_args.py** : Handles command-line argument parsing and file path setup. This module allows you to specify benchmark name, `k` parameter for the k-max selection, and the window size parameter for the bw spike detector.
 
-- **extract_info.py** : Reads and extracts relevant data from CSV and TXT files. It outputs:
+- **extract_info.py** : Reads and extracts relevant data from CSV and TXT files. It extract the following information:
   - CSV → Optane and DRAM writes
-  - TXT → allocated bytes and objects alive over time
+  - TXT → allocated bytes and active objects over time
 
 - **detectors.py** : Detects spikes in memory activity.
-  - `ao_spike_detector` → detects allocation-object spikes
+  - `ao_spike_detector` → detects active-object spikes
   - `bw_spike_detector` → detects bandwidth spikes
 
 - **top_k_spike_selector.py** : Selects the top-k significant spikes using an interval-tree-based algorithm.
 
 - **calculate_bytes.py** : Contains the `calculate_allocated_bytes` function, which computes the allocated bytes corresponding to each selected spike.
 
-- **save_to_file.py** : Saves the resulting allocated bytes summary to a file (`input.txt`) and prints a confirmation message if the save is successful.
+- **save_to_file.py** : Saves the resulting allocated bytes summary to a file (`output.txt`), which will later be used by the placement.c handler to make placement decisions.
 
 
 
