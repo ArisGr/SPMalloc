@@ -97,13 +97,13 @@ In this repo, you will also find our novel, spike-based algorithm designed for e
   - CSV → Optane and DRAM writes
   - TXT → allocated bytes and active objects over time
 
-- **detectors.py** : Detects spikes in memory activity.
+- **detectors.py** : Detect spikes in memory activity.
   - `ao_spike_detector` → detects active-object spikes
   - `bw_spike_detector` → detects bandwidth spikes
 
 - **top_k_spike_selector.py** : Selects the top-k significant spikes using an interval-tree-based algorithm.
 
-- **calculate_bytes.py** : Contains the `calculate_allocated_bytes` function, which computes the allocated bytes corresponding to each selected spike.
+- **alculate_allocated_bytes_of_intervals.py** : Contains the `calculate_allocated_bytes` function, which computes the allocated bytes corresponding to each selected spike.
 
 - **save_to_file.py** : Saves the resulting allocated bytes summary to a file (`output.txt`), which will later be used by the placement.c handler to make placement decisions.
 
