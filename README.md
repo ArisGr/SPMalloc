@@ -70,7 +70,7 @@ for the execution of the target application.
 
 Here's how the log file looks :
 
-![Screenshot_3](https://github.com/user-attachments/assets/f55597e6-f2ff-414d-b3ed-032b2ef634b8)
+<img width="613" height="453" alt="Image" src="https://github.com/user-attachments/assets/5e9a3a33-8f67-41de-ad2d-748f048497cf" />
 
 The active objects value is the number of active allocation objects from the beginning of the execution until the current time stamp, and
 the allocated bytes value is the number of allocated bytes in the current x second time stamp. In the example above x=0.25s, but this value is user defined and can be changed to fit the users preference.
