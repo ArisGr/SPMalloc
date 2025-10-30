@@ -11,9 +11,9 @@ to your own memory type supported by the Memkind API.
 
 ## Table of Contents
 - [Library File Descriptions](#Library-File-Descriptions)
-- [Spike Analysis Algorithm](#Spike-Analysis-Algorithm)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Spike Analysis Algorithm](#Spike-Analysis-Algorithm)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -38,28 +38,6 @@ For example, if output.txt contains:
   and the next 3 kB to Optane. This process continues until all entries in the file are processed, ensuring that memory is allocated according to the algorithm's placement strategy.
 
 - **functions.cpp** : This file includes the new/delete functions from C++, which are simply redirected to the custom functions of the .c file (e.g. custom_allocator.c).
-
-## Spike Analysis Algorithm
-
-In this repo, you will find a number of files, each one with its own functionality for memory spike analysis and data placement decisions. File descriptions:
-
-- **main.py** : The main orchestrator of the spike analysis tool. It calls functions from all other modules to perform the full workflow: argument parsing, data extraction, spike detection, top-k spike selection, allocated bytes calculation, and output.
-
-- **parse_args.py** : Handles command-line argument parsing and file path setup. This module allows you to specify benchmark name, `k`, and spike interval parameters.
-
-- **extract_info.py** : Reads and extracts relevant data from CSV and TXT files. It outputs:
-  - CSV → Optane and DRAM writes
-  - TXT → allocated bytes and objects alive over time
-
-- **detectors.py** : Detects spikes in memory activity.
-  - `ao_spike_detector` → detects allocation-object spikes
-  - `bw_spike_detector` → detects bandwidth spikes
-
-- **top_k_spike_selector.py** : Selects the top-k significant spikes using an interval-tree-based algorithm.
-
-- **calculate_bytes.py** : Contains the `calculate_allocated_bytes` function, which computes the allocated bytes corresponding to each selected spike.
-
-- **save_to_file.py** : Saves the resulting allocated bytes summary to a file (`input.txt`) and prints a confirmation message if the save is successful.
 
 
 ## Installation
@@ -103,6 +81,32 @@ Here's how the log file looks :
 
 The active objects value is the number of active allocation objects from the beginning of the execution until the current time stamp, and
 the allocated bytes value is the number of allocated bytes in the current x second time stamp. In the example above x=0.25s, but this value is user defined and can be changed to fit the users preference.
+
+
+
+## Spike Analysis Algorithm
+
+In this repo, you will find a number of files, each one with its own functionality for memory spike analysis and data placement decisions. File descriptions:
+
+- **main.py** : The main orchestrator of the spike analysis tool. It calls functions from all other modules to perform the full workflow: argument parsing, data extraction, spike detection, top-k spike selection, allocated bytes calculation, and output.
+
+- **parse_args.py** : Handles command-line argument parsing and file path setup. This module allows you to specify benchmark name, `k`, and spike interval parameters.
+
+- **extract_info.py** : Reads and extracts relevant data from CSV and TXT files. It outputs:
+  - CSV → Optane and DRAM writes
+  - TXT → allocated bytes and objects alive over time
+
+- **detectors.py** : Detects spikes in memory activity.
+  - `ao_spike_detector` → detects allocation-object spikes
+  - `bw_spike_detector` → detects bandwidth spikes
+
+- **top_k_spike_selector.py** : Selects the top-k significant spikes using an interval-tree-based algorithm.
+
+- **calculate_bytes.py** : Contains the `calculate_allocated_bytes` function, which computes the allocated bytes corresponding to each selected spike.
+
+- **save_to_file.py** : Saves the resulting allocated bytes summary to a file (`input.txt`) and prints a confirmation message if the save is successful.
+
+
 
 ## Features
 - 🚀 Fast and efficient
