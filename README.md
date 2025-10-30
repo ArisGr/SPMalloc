@@ -10,7 +10,7 @@ to your own memory type supported by the Memkind API.
 
 
 ## Table of Contents
-- [Descriptions](#Descriptions)
+- [Library File Descriptions](#Descriptions)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
