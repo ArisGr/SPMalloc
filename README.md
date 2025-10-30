@@ -11,7 +11,7 @@ to your own memory type supported by the Memkind API.
 
 ## Table of Contents
 - [Library File Descriptions](#Library-File-Descriptions)
-- [Spike Analysis Tool](#SpikeAnalysisTool)
+- [Spike Analysis Tool](#Spike-Analysis-Tool)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -38,6 +38,44 @@ For example, if output.txt contains:
   and the next 3 kB to Optane. This process continues until all entries in the file are processed, ensuring that memory is allocated according to the algorithm's placement strategy.
 
 - **functions.cpp** : This file includes the new/delete functions from C++, which are simply redirected to the custom functions of the .c file (e.g. custom_allocator.c).
+
+## Spike Analysis Tool
+
+This Python project analyzes memory allocation spikes from benchmark runs and outputs a summary of allocated bytes to be placed in DRAM/Optane.
+
+## Overview
+
+The project is modular and organized into multiple files for clarity. The `main.py` file orchestrates the analysis by calling functions from separate modules.
+
+### main.py
+
+- **Argument Parsing**
+  - Uses the merged `parse_args` module to handle command-line arguments (benchmark name, `k`, and spike selection parameters).
+
+- **Data Extraction**
+  - Calls `extract_info` to read:
+    - CSV files → number of Optane/DRAM writes.
+    - TXT files → allocated bytes and objects alive over time.
+
+- **Spike Detection**
+  - Calls `detectors`:
+    - `ao_spike_detector` → detects allocation-object spikes.
+    - `bw_spike_detector` → detects bandwidth spikes.
+
+- **Top-k Spike Selection**
+  - Calls `top_k_spike_selector` to select the most significant spikes using an interval-tree-based algorithm.
+
+- **Allocated Bytes Calculation**
+  - Computes allocated bytes for each selected spike using `calculate_allocated_bytes`.
+
+- **Output**
+  - Saves the resulting allocated bytes summary to `input.txt` using `save_to_file`, printing a confirmation message if successful.
+
+## Example Usage
+
+```bash
+python main.py -i lulesh -k 1 -s 5
+```
 
 ## Installation
 Clone the repository:
