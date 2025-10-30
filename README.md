@@ -39,43 +39,28 @@ For example, if output.txt contains:
 
 - **functions.cpp** : This file includes the new/delete functions from C++, which are simply redirected to the custom functions of the .c file (e.g. custom_allocator.c).
 
-## Spike Analysis Tool
+## Library File Descriptions
 
-This Python project analyzes memory allocation spikes from benchmark runs and outputs a summary of allocated bytes to be placed in DRAM/Optane.
+In this repo, you will find a number of files, each one with its own functionality for memory spike analysis and data placement decisions. File descriptions:
 
-## Overview
+- **main.py** : The main orchestrator of the spike analysis tool. It calls functions from all other modules to perform the full workflow: argument parsing, data extraction, spike detection, top-k spike selection, allocated bytes calculation, and output.
 
-The project is modular and organized into multiple files for clarity. The `main.py` file orchestrates the analysis by calling functions from separate modules.
+- **parse_args.py** : Handles command-line argument parsing and file path setup. This module allows you to specify benchmark name, `k`, and spike interval parameters.
 
-### main.py
+- **extract_info.py** : Reads and extracts relevant data from CSV and TXT files. It outputs:
+  - CSV → Optane and DRAM writes
+  - TXT → allocated bytes and objects alive over time
 
-- **Argument Parsing**
-  - Uses the merged `parse_args` module to handle command-line arguments (benchmark name, `k`, and spike selection parameters).
+- **detectors.py** : Detects spikes in memory activity.
+  - `ao_spike_detector` → detects allocation-object spikes
+  - `bw_spike_detector` → detects bandwidth spikes
 
-- **Data Extraction**
-  - Calls `extract_info` to read:
-    - CSV files → number of Optane/DRAM writes.
-    - TXT files → allocated bytes and objects alive over time.
+- **top_k_spike_selector.py** : Selects the top-k significant spikes using an interval-tree-based algorithm.
 
-- **Spike Detection**
-  - Calls `detectors`:
-    - `ao_spike_detector` → detects allocation-object spikes.
-    - `bw_spike_detector` → detects bandwidth spikes.
+- **calculate_bytes.py** : Contains the `calculate_allocated_bytes` function, which computes the allocated bytes corresponding to each selected spike.
 
-- **Top-k Spike Selection**
-  - Calls `top_k_spike_selector` to select the most significant spikes using an interval-tree-based algorithm.
+- **save_to_file.py** : Saves the resulting allocated bytes summary to a file (`input.txt`) and prints a confirmation message if the save is successful.
 
-- **Allocated Bytes Calculation**
-  - Computes allocated bytes for each selected spike using `calculate_allocated_bytes`.
-
-- **Output**
-  - Saves the resulting allocated bytes summary to `input.txt` using `save_to_file`, printing a confirmation message if successful.
-
-## Example Usage
-
-```bash
-python main.py -i lulesh -k 1 -s 5
-```
 
 ## Installation
 Clone the repository:
