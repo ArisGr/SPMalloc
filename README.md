@@ -34,7 +34,7 @@ For example, if output.txt contains:
   > 3000
   
   this means that the algorithm must place the first 1 kB to optane, the next 2 kB after that to Dram,
-  and the next 3 kB to Optane.This process continues until all entries in the file are processed, ensuring that memory is allocated according to the algorithm's placement strategy.
+  and the next 3 kB to Optane. This process continues until all entries in the file are processed, ensuring that memory is allocated according to the algorithm's placement strategy.
 
 - **functions.cpp** : This file includes the new/delete functions from C++, which are simply redirected to the custom functions of the .c file (e.g. custom_allocator.c).
 
