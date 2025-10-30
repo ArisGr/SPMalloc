@@ -93,7 +93,7 @@ In this repo, you will also find our novel, spike-based algorithm designed for e
 
 - **parse_args.py** : Handles command-line argument parsing and file path setup. This module allows you to specify benchmark name, `k` parameter for the k-max selection, and the window size parameter for the bw spike detector.
 
-- **extract_info.py** : Reads and extracts relevant data from CSV and TXT files. It extract the following information:
+- **extract_info.py** : Reads and extracts relevant data from CSV and TXT files. It extracts the following information:
   - CSV → Optane and DRAM writes
   - TXT → allocated bytes and active objects over time
 
