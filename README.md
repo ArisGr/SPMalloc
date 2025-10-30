@@ -11,7 +11,7 @@ to your own memory type supported by the Memkind API.
 
 ## Table of Contents
 - [Library File Descriptions](#Library-File-Descriptions)
-- [Spike Analysis Tool](#Spike-Analysis-Tool)
+- [Spike Analysis Algorithm](#Spike-Analysis-Algorithm)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -39,7 +39,7 @@ For example, if output.txt contains:
 
 - **functions.cpp** : This file includes the new/delete functions from C++, which are simply redirected to the custom functions of the .c file (e.g. custom_allocator.c).
 
-## Library File Descriptions
+## Spike Analysis Algorithm
 
 In this repo, you will find a number of files, each one with its own functionality for memory spike analysis and data placement decisions. File descriptions:
 
