@@ -87,7 +87,7 @@ the allocated bytes value is the number of allocated bytes in the current x seco
 
 ## Spike Analysis Algorithm
 
-In this repo, you will also find our novel, spike-based algorithm designed for efficient data analysis and placement on heterogeneous memory systems. It is broken into a number of parts which can be described as such:
+In this repo, you will also find our novel, spike-based algorithm designed for efficient data analysis and placement on heterogeneous memory systems. It is broken into a number of files which can be described as such:
 
 - **main.py** : The main orchestrator of the spike analysis tool. It calls functions from all other modules to perform the full workflow: argument parsing, data extraction, spike detection, top-k spike selection, allocated bytes calculation, and output.
 
