@@ -10,7 +10,7 @@ to your own memory type supported by the Memkind API.
 
 
 ## Table of Contents
-- [Library File Descriptions](#Library_File_Descriptions)
+- [Library File Descriptions](#Library-File-Descriptions)
 - [Spike Analysis Tool](#SpikeAnalysisTool)
 - [Installation](#installation)
 - [Usage](#usage)
