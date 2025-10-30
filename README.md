@@ -17,7 +17,7 @@ to your own memory type supported by the Memkind API.
 - [Contributing](#contributing)
 - [License](#license)
 
-## Library_File_Descriptions 
+## LibraryFileDescriptions 
 In this repo, you will find a number of files, each one with its own functionality for data placement on heterogeneous memory systems.
 
 File descriptions:
