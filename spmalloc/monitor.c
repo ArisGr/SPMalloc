@@ -31,7 +31,7 @@ FILE *log_file;
 __attribute__((constructor)) void init_memkind() {
     initialized = 1;
     done = 0;  
-    log_file = fopen("logfile.log", "w");
+    log_file = fopen("logfile.txt", "w");
     if (log_file == NULL) {
         perror("Failed to open logfile");
     }
