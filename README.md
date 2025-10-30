@@ -10,13 +10,14 @@ to your own memory type supported by the Memkind API.
 
 
 ## Table of Contents
-- [Library File Descriptions](#Descriptions)
+- [Library File Descriptions](#LibraryFileDescriptions)
+- [Spike Analysis Tool](#SpikeAnalysisTool)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Descriptions
+## Library File Descriptions 
 In this repo, you will find a number of files, each one with its own functionality for data placement on heterogeneous memory systems.
 
 File descriptions:
